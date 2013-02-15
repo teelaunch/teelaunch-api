@@ -83,7 +83,14 @@ curl https://teelaunch.com/api/v1/projects \
 ```json
 {
   "name": "My Awesome Project",
-  "url": "http://www.indiegogo.com/projects/my-awesome-project"
+  "url": "http://www.indiegogo.com/projects/my-awesome-project",
+  "creator": {
+    "name": {
+      "first": "Nikola",
+      "last": "Tesla"
+    },
+    "email": "nikola@tesla.com"
+  }
 }
 ```
 
@@ -94,6 +101,13 @@ Response:
   "id": "26988293",
   "name": "My Awesome Project",
   "url": "http://www.indiegogo.com/projects/my-awesome-project",
+  "creator": {
+    "name": {
+      "first": "Nikola",
+      "last": "Tesla"
+    },
+    "email": "nikola@tesla.com"
+  },
   "created": "2013-02-14T22:14:44.820Z",
   "updated": "2013-02-14T22:14:44.820Z"
 }

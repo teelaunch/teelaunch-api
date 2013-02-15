@@ -38,7 +38,7 @@
 <p>See <a href="#quick-start">Quick Start</a> for an example implementation.</p>
 <h2>Support</h2>
 <p>Join us on <a href="http://webchat.freenode.net/?channels=teelaunch">IRC WebChat</a> or with a client in <code>#teelaunch</code> on <code>irc.freenode.net</code>.</p>
-<p>You can also email <a href="&#x6d;&#97;&#105;&#x6c;&#116;&#x6f;&#x3a;&#115;&#117;&#112;&#112;&#111;&#x72;&#x74;&#x40;&#x74;&#x65;&#101;&#108;&#97;&#x75;&#x6e;&#99;&#x68;&#46;&#x63;&#x6f;&#109;">&#115;&#117;&#112;&#112;&#111;&#x72;&#x74;&#x40;&#x74;&#x65;&#101;&#108;&#97;&#x75;&#x6e;&#99;&#x68;&#46;&#x63;&#x6f;&#109;</a> or file an <a href="https://github.com/teelaunch/teelaunch-api/issues/new">Issue</a>.</p>
+<p>You can also email <a href="&#109;&#97;&#x69;&#108;&#x74;&#x6f;&#58;&#x73;&#117;&#112;&#x70;&#111;&#x72;&#x74;&#x40;&#116;&#101;&#x65;&#x6c;&#x61;&#117;&#x6e;&#x63;&#x68;&#x2e;&#99;&#111;&#x6d;">&#x73;&#117;&#112;&#x70;&#111;&#x72;&#x74;&#x40;&#116;&#101;&#x65;&#x6c;&#x61;&#117;&#x6e;&#x63;&#x68;&#x2e;&#99;&#111;&#x6d;</a> or file an <a href="https://github.com/teelaunch/teelaunch-api/issues/new">Issue</a>.</p>
 <h2>Quick Start</h2>
 <h3>Steps</h3>
 <ol>
@@ -67,13 +67,27 @@
 </blockquote>
 <pre><code class="lang-json">{
   &quot;name&quot;: &quot;My Awesome Project&quot;,
-  &quot;url&quot;: &quot;http://www.indiegogo.com/projects/my-awesome-project&quot;
+  &quot;url&quot;: &quot;http://www.indiegogo.com/projects/my-awesome-project&quot;,
+  &quot;creator&quot;: {
+    &quot;name&quot;: {
+      &quot;first&quot;: &quot;Nikola&quot;,
+      &quot;last&quot;: &quot;Tesla&quot;
+    },
+    &quot;email&quot;: &quot;nikola@tesla.com&quot;
+  }
 }</code></pre>
 <p>Response:</p>
 <pre><code class="lang-json">{
   &quot;id&quot;: &quot;26988293&quot;,
   &quot;name&quot;: &quot;My Awesome Project&quot;,
   &quot;url&quot;: &quot;http://www.indiegogo.com/projects/my-awesome-project&quot;,
+  &quot;creator&quot;: {
+    &quot;name&quot;: {
+      &quot;first&quot;: &quot;Nikola&quot;,
+      &quot;last&quot;: &quot;Tesla&quot;
+    },
+    &quot;email&quot;: &quot;nikola@tesla.com&quot;
+  },
   &quot;created&quot;: &quot;2013-02-14T22:14:44.820Z&quot;,
   &quot;updated&quot;: &quot;2013-02-14T22:14:44.820Z&quot;
 }</code></pre>
