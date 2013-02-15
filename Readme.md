@@ -409,7 +409,7 @@ Response:
 
 **5.** Update reward status to "ready"
 
-> You will receive an email confirmation for approval within 24 hours.  It will also contain an attachment of the product proof (e.g. JPG/PDF).
+> You will receive an email confirmation for approval within 24 hours.  It will also contain an attachment of the product proof (e.g. JPG/PDF) and an invoice for payment with Stripe or Balanced ACH.
 
 Request:
 
