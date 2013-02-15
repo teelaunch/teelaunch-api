@@ -10,11 +10,12 @@ Teelaunch is the only swag service provider ("SSP") for crowdfunding platforms &
 * [Overview](#overview)
 * [Support](#support)
 * [Quick Start](#quick-start)
+  * [Steps](#steps)
+  * [Guide](#guide)
 * [Resources](#resources)
   * [Projects](#projects)
   * [Rewards](#rewards)
   * [Backers](#backers)
-  * [Orders](#orders)
   * [Items](#items)
   * [Products](#products)
   * [Verification](#verification)
@@ -37,15 +38,33 @@ Teelaunch is the only swag service provider ("SSP") for crowdfunding platforms &
 * Python (pip) <https://github.com/teelaunch/teelaunch-python>
 * PHP (pear) <https://github.com/teelaunch/teelaunch-php>
 
+See [Quick Start](#quick-start) for an example implementation.
+
 
 ## Support
 
-Join us in `#teelaunch` on `irc.freenode.net`.  You can also email <support@teelaunch.com> or file an [Issue][/issues].
+Join us in `#teelaunch` on `irc.freenode.net`.  You can also email <support@teelaunch.com> or file an [Issue](/issues).
 
 
 ## Quick Start
 
-**1.** Create a new project.
+### Steps
+
+1. Create a new project
+2. Create a new reward for the project
+3. Create backer(s)
+4. Add reward items to be delivered to backer(s)
+5. Update reward status to "ready"
+
+Here's what happens next...
+
+* We'll review the reward after your approval and mark `reward.status` to "production".
+* We fulfill your reward with a quick turnaround time of 5-10 days.
+* Backers receive automated emails (e.g. "Your reward is on its way").
+
+### Guide
+
+**1.** Create a new project
 
 Request:
 
@@ -90,7 +109,20 @@ curl https://teelaunch.com/api/v1/rewards \
      -d @reward.json
 ```
 
-> Here's how your local `reward.json` might look:
+> Before you can prepare `reward.json`, you need to know what product you want to offer as a reward (e.g. an American Apparel t-shirt).  To do this, you need to query the [Products](#products) resource to determine the proper `product_id`.  In the example below, a `product_id` of "51236345" is for an American Apparel short-sleeved tee.  An easy way to integrate this on your front-end is to simply list all products in a drop-down menu with their respective `id` values.  Example given below...
+
+```html
+<label for="product-id">
+  Select a Reward Type:
+  <select name="product_id" id="product-id">
+    <option value="51236345">American Apparel 4.3oz T-Shirt (#2001)</option>
+    <option value="51236723">Gildan 5.3 oz T-Shirt (#5000)</option>
+    <option value="15123124">Hanes 5.2 oz T-Shirt (#5280)</option>
+  </select>
+</label>
+```
+
+> Here's how your local `reward.json` might look after you know the `product_id`:
 
 ```json
 {
@@ -116,6 +148,7 @@ Response:
   "id": "15892039",
   "project_id": "26988293",
   "product_id": "51236345",
+  "status": "draft",
   "description": "Official T-Shirt",
   "options": {
     "color": "Royal Blue",
@@ -124,7 +157,7 @@ Response:
       "num_colors": 1
     }
   },
-  "fields": [ "size", "address" ]
+  "fields": [ "size", "address" ],
   "created": "2013-02-14T22:14:44.820Z",
   "updated": "2013-02-14T22:14:44.820Z"
 }
@@ -132,51 +165,7 @@ Response:
 
 > Note that you can't modify pre-populated (required) fields such as "size" and "address".  In the future we may allow you to create custom fields that would allow you to request answers to in email surveys.
 
-**3.** Create a new order based on the reward (e.g. when the project is successfully crowdfunded).
-
-Request:
-
-```bash
-curl https://teelaunch.com/api/v1/orders \
-     -u key:secret \
-     -X POST \
-     -H "Content-Type: application/json" \
-     -d @order.json
-```
-
-> Here's how your local `order.json` might look:
-
-```json
-{
-  "fulfillment": false
-}
-```
-
-Response (if we don't handle fulfillment):
-
-```json
-{
-  "id": "32897340",
-  "status": "draft",
-  "fulfillment": false,
-  "created": "2013-02-14T22:14:44.820Z",
-  "updated": "2013-02-14T22:14:44.820Z"
-}
-```
-
-Response (if we handle fulfillment):
-
-```json
-{
-  "id": "32897340",
-  "status": "draft",
-  "fulfillment": true,
-  "created": "2013-02-14T22:14:44.820Z",
-  "updated": "2013-02-14T22:14:44.820Z"
-}
-```
-
-**4.** Create backer(s)
+**3.** Create backer(s)
 
 Request:
 
@@ -299,7 +288,9 @@ Response:
 ]
 ```
 
-**5.** Add line items to the order (with reward's product options, e.g. shirt size)
+**4.** Add reward items to be delivered to backer(s)
+
+> (e.g. with reward's product options, such as shirt size)
 
 Request:
 
@@ -315,7 +306,6 @@ curl https://teelaunch.com/api/v1/items \
 
 ```json
 {
-  "order_id": "32897340",
   "reward_id": "15892039",
   "backer_id": "51891230",
   "survey": false,
@@ -336,7 +326,6 @@ Response:
 ```json
 {
   "id": "58912385",
-  "order_id": "32897340",
   "reward_id": "15892039",
   "backer_id": "51891230",
   "survey": false,
@@ -359,7 +348,7 @@ Response:
 ```json
 [
   {
-    "order_id": "32897340",
+    "reward_id": "15892039",
     "backer_id": "94309634",
     "survey": false,
     "options": {
@@ -367,7 +356,7 @@ Response:
     }
   },
   {
-    "order_id": "32897340",
+    "reward_id": "15892039",
     "backer_id": "10123015",
     "survey": false,
     "options": {
@@ -383,7 +372,7 @@ Response:
 [
   {
     "id": "18985912",
-    "order_id": "32897340",
+    "reward_id": "15892039",
     "backer_id": "94309634",
     "survey": false,
     "options": {
@@ -400,7 +389,7 @@ Response:
   },
   {
     "id": "23985729",
-    "order_id": "32897340",
+    "reward_id": "15892039",
     "backer_id": "10123015",
     "survey": false,
     "options": {
@@ -418,12 +407,14 @@ Response:
 ]
 ```
 
-**6.** Update order status to "ready" and receive an automated email confirmation for payment and approval.
+**5.** Update reward status to "ready"
+
+> You will receive an email confirmation for approval within 24 hours.  It will also contain an attachment of the product proof (e.g. JPG/PDF).
 
 Request:
 
 ```bash
-curl https://teelaunch.com/api/v1/orders/32897340 \
+curl https://teelaunch.com/api/v1/rewards/15892039 \
      -u key:secret \
      -X PUT \
      -d "{\n  \"status\": \"ready\"\n}"
@@ -433,30 +424,23 @@ Response:
 
 ```json
 {
-  "id": "32897340",
-  "reward_id": "15892039",
+  "id": "15892039",
+  "project_id": "26988293",
+  "product_id": "51236345",
   "status": "ready",
-  "quantity": 100,
-  "fulfillment": false,
-  "price": 5.54,
-  "tax": 0,
-  "shipping": {
-    "carrier": "UPS",
-    "method": "Ground",
-    "amount": 25
+  "description": "Official T-Shirt",
+  "options": {
+    "color": "Royal Blue",
+    "artwork": {
+      "url": "https://www.dropbox.com/s/c3x34pi4pumsw8p/teelaunch_prod_rev1.pdf",
+      "num_colors": 1
+    }
   },
-  "discount": 0,
-  "total": 579,
+  "fields": [ "size", "address" ],
   "created": "2013-02-14T22:14:44.820Z",
   "updated": "2013-02-14T22:18:00.820Z"
 }
 ```
-
-Here's what happens next...
-
-* We'll review the order, mark `order.status` to "production", and send you an automated email for you to "OK" the proof image.
-* Payment is charged, we fulfill your order from our USA facility, and turnaround time is 5-10 days.
-* Backers receive automated emails with shipment tracking information (e.g. "Your reward is on its way").
 
 
 ## Resources <sup>v1</sup>
@@ -553,36 +537,6 @@ TODO
 
 TODO
 
-### Orders
-
-| Path        | Method | Description  |
-| ----------- |:------:| ------------ |
-| /orders     | GET    | List orders  |
-| /orders     | POST   | Create order |
-| /orders/:id | GET    | Read order   |
-| /orders/:id | PUT    | Update order |
-| /orders/:id | DELETE | Delete order |
-
-#### List orders
-
-TODO
-
-#### Create order
-
-TODO
-
-#### Read order
-
-TODO
-
-#### Update order
-
-TODO
-
-#### Delete order
-
-TODO
-
 ### Items
 
 | Path       | Method | Description |
@@ -618,28 +572,13 @@ TODO
 | Path          | Method | Description                 |
 | ------------- |:------:| --------------------------- |
 | /products     | GET    | List products               |
-| /products     | POST   | Create product (Restricted) |
 | /products/:id | GET    | Read product                |
-| /products/:id | PUT    | Update product (Restricted) |
-| /products/:id | DELETE | Delete product (Restricted) |
 
 #### List products
 
 TODO
 
-#### Create products
-
-TODO
-
 #### Read product
-
-TODO
-
-#### Update product (Restricted)
-
-TODO
-
-#### Delete product (Restricted)
 
 TODO
 
@@ -653,55 +592,6 @@ TODO
 
 TODO
 
-### Packages
-
-> If you need to lookup information for a package (e.g. shipping carrier and method)...
-
-| Path          | Method | Description    |
-| ------------- |:------:| -------------- |
-| /packages     | GET    | List packages  |
-| /packages     | POST   | Create package |
-| /packages/:id | GET    | Read package   |
-| /packages/:id | PUT    | Update package |
-| /packages/:id | DELETE | Delete package |
-
-#### List Packages
-
-TODO
-
-#### Create Package
-
-TODO
-
-#### Read Package
-
-Request:
-
-```bash
-curl https://teelaunch.com/api/v1/package/32897340 \
-     -u key:secret
-```
-
-Response:
-
-```json
-{
-  "id": "18951782",
-  "label_id": "58932459",
-  "mailer": "S-3353",
-  "created": "2013-02-14T22:14:44.820Z",
-  "updated": "2013-02-14T22:14:44.820Z"
-}
-```
-
-#### Update Package
-
-TODO
-
-#### Delete Package
-
-TODO
-
 ### Tracking
 
 | Path          | Method | Description   |
@@ -710,7 +600,9 @@ TODO
 
 #### Read tracking
 
-If you need to track a package with `item.package_id` (this field is populated for an item upon shipment)...
+TODO
+
+> If you need to track a package with `label.tracking_code` (this field is populated for an item upon shipment)...
 
 Request:
 
@@ -719,19 +611,9 @@ curl https://teelaunch.com/api/v1/tracking/32897340 \
      -u key:secret
 ```
 
-TODO
-
 Response:
 
 ```json
-{
-  "status": "Delivered",
-  "details": [
-    "Delivered to front door",
-    "Left origin facility",
-    "Scanned at origin facility"
-  ]
-}
 ```
 
 ### Rates
@@ -828,7 +710,7 @@ curl https://teelaunch.com/api/v1/labels \
      -d @label.json
 ```
 
-Here's how your local `label.json` might look:
+> Here's how your local `label.json` might look:
 
 ```json
 {
