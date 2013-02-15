@@ -3,24 +3,26 @@
 
 Teelaunch is the only swag service provider ("SSP") for crowdfunding platforms & projects.
 
+**Active work in progress, open to feedback and suggestions**
+
 ## Index
 
-* [Overview][#overview]
-* [Support][#support]
-* [Quick Start][#quick-start]
-* [Resources][#resources]
-  * [Projects][#projects]
-  * [Rewards][#rewards]
-  * [Backers][#backers]
-  * [Orders][#orders]
-  * [Items][#items]
-  * [Products][#products]
-  * [Verification][#verification]
-  * [Packages][#packages]
-  * [Tracking][#tracking]
-  * [Rates][#rates]
-  * [Labels][#labels]
-* [Examples][#Examples]
+* [Overview](#overview)
+* [Support](#support)
+* [Quick Start](#quick-start)
+* [Resources](#resources)
+  * [Projects](#projects)
+  * [Rewards](#rewards)
+  * [Backers](#backers)
+  * [Orders](#orders)
+  * [Items](#items)
+  * [Products](#products)
+  * [Verification](#verification)
+  * [Packages](#packages)
+  * [Tracking](#tracking)
+  * [Rates](#rates)
+  * [Labels](#labels)
+* [Examples](#examples)
 
 ## Overview
 
@@ -105,7 +107,7 @@ curl https://teelaunch.com/api/v1/rewards \
 }
 ```
 
-> Note that `reward.product_id` can be found using using the [Products][#products] resource.
+> Note that `reward.product_id` can be found using using the [Products](#products) resource.
 
 Response:
 
