@@ -29,7 +29,7 @@ Teelaunch is the only swag service provider ("SSP") for crowdfunding platforms &
 
 **1.** Sign up for a free Teelaunch developer account.
 
-**2.** Create a new app and receive your API key and secret.
+**2.** Create a new app and receive your API key.
 
 **3.** Integrate our RESTful API with your DSL wrapper:
 
@@ -72,7 +72,7 @@ Request:
 
 ```bash
 curl https://teelaunch.com/api/v1/projects \
-     -u key:secret \
+     -u key: \
      -X POST \
      -H "Content-Type: application/json" \
      -d @project.json
@@ -105,7 +105,7 @@ Request:
 
 ```bash
 curl https://teelaunch.com/api/v1/rewards \
-     -u key:secret \
+     -u key: \
      -X POST \
      -H "Content-Type: application/json" \
      -d @reward.json
@@ -173,7 +173,7 @@ Request:
 
 ```bash
 curl https://teelaunch.com/api/v1/backers \
-     -u key:secret \
+     -u key: \
      -X POST \
      -H "Content-Type: application/json" \
      -d @backer.json
@@ -298,7 +298,7 @@ Request:
 
 ```bash
 curl https://teelaunch.com/api/v1/items \
-     -u key:secret \
+     -u key: \
      -X POST \
      -H "Content-Type: application/json" \
      -d @item.json
@@ -417,7 +417,7 @@ Request:
 
 ```bash
 curl https://teelaunch.com/api/v1/rewards/15892039 \
-     -u key:secret \
+     -u key: \
      -X PUT \
      -d "{\n  \"status\": \"ready\"\n}"
 ```
@@ -610,7 +610,7 @@ Request:
 
 ```bash
 curl https://teelaunch.com/api/v1/tracking/32897340 \
-     -u key:secret
+     -u key:
 ```
 
 Response:
@@ -630,7 +630,7 @@ Request:
 
 ```bash
 curl https://teelaunch.com/api/v1/postage/rates \
-     -u key:secret \
+     -u key: \
      -d 'to=94129' \
      -d 'from=27601' \
      -d 'length=9' \
@@ -706,7 +706,7 @@ Request:
 
 ```bash
 curl https://teelaunch.com/api/v1/labels \
-     -u key:secret \
+     -u key: \
      -X POST \
      -H "Content-Type: application/json" \
      -d @label.json
