@@ -737,7 +737,7 @@ curl https://teelaunch.com/api/v1/labels \
   "length": 9,
   "width": 12,
   "height": 1,
-  "weight": 7:
+  "weight": 7,
   "carrier": "USPS",
   "method": "First Class"
 }
