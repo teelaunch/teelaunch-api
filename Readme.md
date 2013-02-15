@@ -343,7 +343,7 @@ Response:
 }
 ```
 
-> Here's how your local `item.json` might look for creating multiple line items:
+> Here's how your local `item.json` might look for creating multiple reward items:
 
 ```json
 [
