@@ -317,9 +317,9 @@ curl https://teelaunch.com/api/v1/items \
 
 > Note that `item.fields` is an object requiring values for `reward.fields` specified above (e.g. "size" and "address").
 
-> If you don't provide `item.fields.address` and the respective `backer.address` exists, then `item.options.address` will be pre-populated.  This is especially helpful for   Note that you can however pass a new `item.fields.address` or update the `backer.address` first.
+> If you don't provide `item.fields.address` and the respective `backer.address` exists, then `item.options.address` will be pre-populated.  You can however pass a new `item.fields.address` or update the `backer.address` beforehand.
 
-> If you don't provide all required `item.options` (e.g. `item.options.size` or `item.options.address`) and if `item.survey` is `true`, then we'll survey the backer by email to get values for `item.options`.
+> If you don't provide all required `item.options` (e.g. `item.options.size` or `item.options.address`) and if `item.survey` is `true`, then we'll survey the backer by email to get values for `item.options`.  A reward cannot be fulfilled unless all required fields for all items are present.
 
 Response:
 

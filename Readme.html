@@ -37,7 +37,7 @@
 </ul>
 <p>See <a href="#quick-start">Quick Start</a> for an example implementation.</p>
 <h2>Support</h2>
-<p>Join us in <code>#teelaunch</code> on <code>irc.freenode.net</code>.  You can also email <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#111;&#58;&#115;&#117;&#x70;&#112;&#x6f;&#114;&#x74;&#x40;&#116;&#101;&#101;&#108;&#97;&#117;&#x6e;&#x63;&#x68;&#x2e;&#99;&#111;&#109;">&#115;&#117;&#x70;&#112;&#x6f;&#114;&#x74;&#x40;&#116;&#101;&#101;&#108;&#97;&#117;&#x6e;&#x63;&#x68;&#x2e;&#99;&#111;&#109;</a> or file an <a href="/issues">Issue</a>.</p>
+<p>Join us in <code>#teelaunch</code> on <code>irc.freenode.net</code>.  You can also email <a href="&#x6d;&#97;&#x69;&#108;&#x74;&#111;&#58;&#x73;&#x75;&#x70;&#112;&#111;&#114;&#116;&#64;&#x74;&#x65;&#x65;&#108;&#x61;&#x75;&#110;&#x63;&#x68;&#x2e;&#99;&#111;&#109;">&#x73;&#x75;&#x70;&#112;&#111;&#114;&#116;&#64;&#x74;&#x65;&#x65;&#108;&#x61;&#x75;&#110;&#x63;&#x68;&#x2e;&#99;&#111;&#109;</a> or file an <a href="/issues">Issue</a>.</p>
 <h2>Quick Start</h2>
 <h3>Steps</h3>
 <ol>
@@ -262,8 +262,8 @@
 }</code></pre>
 <blockquote>
 <p>Note that <code>item.fields</code> is an object requiring values for <code>reward.fields</code> specified above (e.g. &quot;size&quot; and &quot;address&quot;).</p>
-<p>If you don&#39;t provide <code>item.fields.address</code> and the respective <code>backer.address</code> exists, then <code>item.options.address</code> will be pre-populated.  This is especially helpful for   Note that you can however pass a new <code>item.fields.address</code> or update the <code>backer.address</code> first.</p>
-<p>If you don&#39;t provide all required <code>item.options</code> (e.g. <code>item.options.size</code> or <code>item.options.address</code>) and if <code>item.survey</code> is <code>true</code>, then we&#39;ll survey the backer by email to get values for <code>item.options</code>.</p>
+<p>If you don&#39;t provide <code>item.fields.address</code> and the respective <code>backer.address</code> exists, then <code>item.options.address</code> will be pre-populated.  You can however pass a new <code>item.fields.address</code> or update the <code>backer.address</code> beforehand.</p>
+<p>If you don&#39;t provide all required <code>item.options</code> (e.g. <code>item.options.size</code> or <code>item.options.address</code>) and if <code>item.survey</code> is <code>true</code>, then we&#39;ll survey the backer by email to get values for <code>item.options</code>.  A reward cannot be fulfilled unless all required fields for all items are present.</p>
 </blockquote>
 <p>Response:</p>
 <pre><code class="lang-json">{
