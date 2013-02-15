@@ -643,7 +643,7 @@ Response:
 Request:
 
 ```bash
-curl https://teelaunch.com/api/v1/postage/rates \
+curl https://teelaunch.com/api/v1/rates \
      -u key: \
      -d 'to=94129' \
      -d 'from=27601' \
