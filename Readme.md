@@ -43,7 +43,7 @@ See [Quick Start](#quick-start) for an example implementation.
 
 ## Support
 
-Join us in `#teelaunch` on `irc.freenode.net`.  You can also email <support@teelaunch.com> or file an [Issue](/issues).
+Join us on [IRC WebChat](http://webchat.freenode.net/?channels=teelaunch) or with a client in `#teelaunch` on `irc.freenode.net`.  You can also email <support@teelaunch.com> or file an [Issue](https://github.com/teelaunch/teelaunch-api/issues/new).
 
 
 ## Quick Start
